@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react'
 import { useForm } from '../hooks/useForm';
-import { useQuestionnaire } from '../hooks/useQuestionnaire';
 
-export const DatosPersonales = ({onSubmitDataPersonal, datosPersonales}) => {
+export const ActividadesFavoritas = ({onSubmitDataActividad, previousPage}) => {
 
     const { nombres, apellidos, telefono, correo, onInputChange, onResetForm } = useForm({
-        nombres: datosPersonales.nombres,
-        apellidos: datosPersonales.apellidos,
-        telefono: datosPersonales.telefono,
-        correo: datosPersonales.correo
+        nombres: '',
+        apellidos: '',
+        telefono: 0,
+        correo: ''
     });    
 
     return (
@@ -16,17 +15,17 @@ export const DatosPersonales = ({onSubmitDataPersonal, datosPersonales}) => {
         <section id="Contenido">
           <article>
             <header>
-              <h1 id="categoria">Información personal</h1>
+              <h1 id="categoria">Actividades favoritas</h1>
             </header>
             <div className="contenido">
               <div className="form">
                 <form>
-                  <label for="nombre">Nombres</label>
+                  <label for="nombre">Cuales son tus actividades favoritas?</label>
                   <input
                     type="text"
                     id="nombres"
                     name="nombres"
-                    placeholder="Ingresa tu nombres"
+                    placeholder="Ingresa tus actividades favoritas"
                     value={nombres}
                     onChange={onInputChange}
                     required
@@ -65,6 +64,7 @@ export const DatosPersonales = ({onSubmitDataPersonal, datosPersonales}) => {
                     required
                   />
                   <button onClick={() => onSubmitDataPersonal(nombres, apellidos, telefono, correo)}>Siguiente</button>
+                  <button onClick={() => previousPage(1)}>Anterios</button>
                 </form>
               </div>
             </div>

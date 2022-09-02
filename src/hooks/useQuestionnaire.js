@@ -8,15 +8,22 @@ export const useQuestionnaire = () => {
         correo: ''
     });
 
+    const [datosActividades, setdatosActividades] = useState({
+        actvidaades: '',
+        tiempo: '',
+        interes: '',
+        dejar: ''
+    })
+
     const [pagina, setPagina] = useState(1)
 
-    const setDatosPersonales = ({
+    const setDatosPersonales = async ({
         nombres ='',
         apellidos= '',
         telefono =0,
         correo = ''
     }) =>{
-        setdatosPersonales({
+        await setdatosPersonales({
           nombres: nombres,
           apellidos:apellidos,
           telefono: telefono,
@@ -24,12 +31,36 @@ export const useQuestionnaire = () => {
         });
     }
 
+    const setDatosActividades = async ({
+        actvidaades= '',
+        tiempo= '',
+        interes= '',
+        dejar= ''
+    })=>{
+        await setdatosActividades({
+          actvidaades: actvidaades,
+          tiempo: tiempo,
+          interes: interes,
+          dejar: dejar,
+        });
+    }
+
+    console.log(datosPersonales);   
+
+    const nextPage = async (page) => {
+        await setPagina(page)
+    }
+
+    console.log(pagina)
+
 
 
     return {
         datosPersonales: datosPersonales,
         pagina: pagina, 
-        setDatosPersonales
+        setDatosActividades,
+        setDatosPersonales,
+        nextPage
     }
 
 }
