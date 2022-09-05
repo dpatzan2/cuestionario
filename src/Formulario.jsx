@@ -4,11 +4,10 @@ import { DatosPersonales } from './components/DatosPersonales';
 import { useQuestionnaire } from './hooks/useQuestionnaire';
 
 export const Formulario = () => {
-  const { datosPersonales, pagina, nextPage, setDatosPersonales} = useQuestionnaire();
+  const { datosPersonales, datosActividades, pagina, nextPage, setDatosPersonales, setDatosActividades} = useQuestionnaire();
   console.log(datosPersonales);
 
   const onSubmitDataPersonal = async (nombres, apellidos, telefono, correo) => {
-        console.log(nombres)
         await setDatosPersonales({
           nombres: nombres,
           apellidos: apellidos,
@@ -16,12 +15,17 @@ export const Formulario = () => {
           correo: correo,
         });
         continuePage(2)
-        onResetForm();
   }
 
-  const onSubmitDataActividad = async() => {
-
-  }
+  const onSubmitDataActividad = async (actvidaades, tiempo, interes, dejar) => {
+    await setDatosActividades({
+      actvidaades: actvidaades,
+      tiempo: tiempo,
+      interes: interes,
+      dejar: dejar,
+    });
+    continuePage(3);
+  };
 
   const continuePage = async (page) => {
     await nextPage(page);
@@ -34,14 +38,12 @@ export const Formulario = () => {
     switch (pagina) {
       case 1:
         return (
-          <>
-            <DatosPersonales onSubmitDataPersonal={onSubmitDataPersonal} datosPersonales={datosPersonales} />
-          </>
+          <DatosPersonales onSubmitDataPersonal={onSubmitDataPersonal} datosPersonales={datosPersonales} />
         );
         break;
       case 2:
         return (
-          <ActividadesFavoritas onSubmitDataActividad={onSubmitDataActividad} previousPage={previousPage} />
+          <ActividadesFavoritas onSubmitDataActividad={onSubmitDataActividad} previousPage={previousPage} datosActividades={datosActividades}/>
         )
         break;
       default:

@@ -57,6 +57,7 @@ export const useQuestionnaire = () => {
 
     return {
         datosPersonales: datosPersonales,
+        datosActividades: datosActividades,
         pagina: pagina, 
         setDatosActividades,
         setDatosPersonales,

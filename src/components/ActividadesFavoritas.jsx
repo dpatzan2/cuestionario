@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react'
 import { useForm } from '../hooks/useForm';
 
-export const ActividadesFavoritas = ({onSubmitDataActividad, previousPage}) => {
+export const ActividadesFavoritas = ({onSubmitDataActividad, previousPage, datosActividades}) => {
 
-    const { nombres, apellidos, telefono, correo, onInputChange, onResetForm } = useForm({
-        nombres: '',
-        apellidos: '',
-        telefono: 0,
-        correo: ''
+    const { actvidaades, tiempo, interes, dejar, onInputChange, onResetForm } = useForm({
+        actvidaades: datosActividades.actvidaades,
+        tiempo: datosActividades.tiempo,
+        interes: datosActividades.interes,
+        dejar: datosActividades.dejar,
     });    
+
+    const regresar = () => {
+      onSubmitDataActividad(actvidaades, tiempo, interes, dejar);
+      previousPage(1)
+    }
 
     return (
       <>
@@ -23,48 +28,48 @@ export const ActividadesFavoritas = ({onSubmitDataActividad, previousPage}) => {
                   <label for="nombre">Cuales son tus actividades favoritas?</label>
                   <input
                     type="text"
-                    id="nombres"
-                    name="nombres"
+                    id="actvidaades"
+                    name="actvidaades"
                     placeholder="Ingresa tus actividades favoritas"
-                    value={nombres}
+                    value={actvidaades}
                     onChange={onInputChange}
                     required
                   />
 
-                  <label for="pass">Apellidos</label>
+                  <label for="pass">Cuanto tiempo le dedicas a estas actividades?</label>
                   <input
                     type="text"
-                    id="apellidos"
-                    name="apellidos"
-                    placeholder="Ingresa tys apellidos"
-                    value={apellidos}
+                    id="tiempo"
+                    name="tiempo"
+                    placeholder="Ingresa el tiempo, ejemplo 3-4 horas"
+                    value={tiempo}
                     onChange={onInputChange}
                     required
                   />
 
-                  <label for="telefono">Numero de telefono</label>
+                  <label for="telefono">Que actividades te llaman la atencion y por que?</label>
                   <input
-                    type="number"
-                    id="telefono"
-                    name="telefono"
-                    placeholder="Ingresa el numero de telefono"
-                    value={telefono}
+                    type="text"
+                    id="interes"
+                    name="interes"
+                    placeholder="Ingresa actividades de tu interes"
+                    value={interes}
                     onChange={onInputChange}
                     required
                   />
 
-                  <label for="correo">Correo</label>
+                  <label for="correo">Que activdades te gustaria dejar de hacer?</label>
                   <input
-                    type="email"
-                    id="correo"
-                    name="correo"
-                    placeholder="Ingresa el correo"
-                    value={correo}
+                    type="text"
+                    id="dejar"
+                    name="dejar"
+                    placeholder="Ingresa las actividades que deseas dejar"
+                    value={dejar}
                     onChange={onInputChange}
                     required
                   />
-                  <button onClick={() => onSubmitDataPersonal(nombres, apellidos, telefono, correo)}>Siguiente</button>
-                  <button onClick={() => previousPage(1)}>Anterios</button>
+                  <button onClick={() => onSubmitDataActividad(actvidaades, tiempo, interes, dejar)}>Siguiente</button>
+                  <button onClick={() => regresar()}>Anterios</button>
                 </form>
               </div>
             </div>
