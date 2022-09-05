@@ -20,7 +20,15 @@ export const useQuestionnaire = () => {
         juegos: '',
         tiempo: '',
         interes: '',
-    })
+    });
+
+
+    const [datosPeliculas, setdatosPeliculas] = useState({
+      gustar: "",
+      peliculas: "",
+      tiempo: "",
+      interes: "",
+    });
 
     const [pagina, setPagina] = useState(1)
 
@@ -66,6 +74,20 @@ export const useQuestionnaire = () => {
         });
     }
 
+    const setDatosPeliculas = async({
+      gustar= "",
+      peliculas = "",
+      tiempo ="",
+      interes ="",
+    }) => {
+        await setdatosPeliculas({
+          gustar: gustar,
+          peliculas: peliculas,
+          tiempo: tiempo,
+          interes: interes,
+        });
+    };
+
     const nextPage = async (page) => {
         await setPagina(page)
     }
@@ -78,10 +100,12 @@ export const useQuestionnaire = () => {
         datosPersonales: datosPersonales,
         datosActividades: datosActividades,
         datosJuegos: datosJuegos,
+        datosPeliculas: datosPeliculas,
         pagina: pagina, 
         setDatosActividades,
         setDatosPersonales,
         setDatosJuegos,
+        setDatosPeliculas,
         nextPage
     }
 

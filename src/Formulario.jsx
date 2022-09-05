@@ -2,10 +2,11 @@ import React from 'react'
 import { ActividadesFavoritas } from './components/ActividadesFavoritas';
 import { DatosPersonales } from './components/DatosPersonales';
 import { Juegos } from './components/Juegos';
+import { Peliculas } from './components/Peliculas';
 import { useQuestionnaire } from './hooks/useQuestionnaire';
 
 export const Formulario = () => {
-  const { datosPersonales, datosActividades, datosJuegos, pagina, nextPage, setDatosPersonales, setDatosActividades, setDatosJuegos} = useQuestionnaire();
+  const { datosPersonales, datosActividades, datosJuegos, datosPeliculas, pagina, nextPage, setDatosPersonales, setDatosActividades, setDatosJuegos, setDatosPeliculas} = useQuestionnaire();
   console.log(datosPersonales);
 
   const onSubmitDataPersonal = async (nombres, apellidos, telefono, correo, pagina) => {
@@ -38,6 +39,16 @@ export const Formulario = () => {
     continuePage(pagina);
   }
 
+  const onSubmitDataPeliculas = async (gustar,peliculas,tiempo,interes, pagina) => {
+    await setDatosPeliculas({
+      gustar: gustar,
+      peliculas: peliculas,
+      tiempo: tiempo,
+      interes: interes,
+    });
+    continuePage(pagina);
+  }
+
   const continuePage = async (page) => {
     await nextPage(page);
   }
@@ -60,6 +71,11 @@ export const Formulario = () => {
       case 3:
         return (
           <Juegos onSubmitDataJuegos={onSubmitDataJuegos} previousPage={previousPage} datosJuegos={datosJuegos}/>
+        )
+        break;
+      case 4:
+        return (
+          <Peliculas onSubmitDataPeliculas={onSubmitDataPeliculas} previousPage={previousPage} datosPeliculas={datosPeliculas}/>
         )
       default:
         return;
