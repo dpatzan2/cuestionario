@@ -11,8 +11,7 @@ export const ActividadesFavoritas = ({onSubmitDataActividad, previousPage, datos
     });    
 
     const regresar = () => {
-      onSubmitDataActividad(actvidaades, tiempo, interes, dejar);
-      previousPage(1)
+      onSubmitDataActividad(actvidaades, tiempo, interes, dejar, 1);
     }
 
     return (
@@ -68,7 +67,7 @@ export const ActividadesFavoritas = ({onSubmitDataActividad, previousPage, datos
                     onChange={onInputChange}
                     required
                   />
-                  <button onClick={() => onSubmitDataActividad(actvidaades, tiempo, interes, dejar)}>Siguiente</button>
+                  <button onClick={() => onSubmitDataActividad(actvidaades, tiempo, interes, dejar, 3)}>Siguiente</button>
                   <button onClick={() => regresar()}>Anterios</button>
                 </form>
               </div>

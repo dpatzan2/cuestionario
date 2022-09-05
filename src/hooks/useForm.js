@@ -16,6 +16,8 @@ export const useForm = ( initialForm = {} ) => {
         setFormState( initialForm );
     }
 
+    console.log(formState)
+
     return {
         ...formState,
         formState,

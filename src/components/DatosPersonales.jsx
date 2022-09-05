@@ -64,7 +64,7 @@ export const DatosPersonales = ({onSubmitDataPersonal, datosPersonales}) => {
                     onChange={onInputChange}
                     required
                   />
-                  <button onClick={() => onSubmitDataPersonal(nombres, apellidos, telefono, correo)}>Siguiente</button>
+                  <button onClick={() => onSubmitDataPersonal(nombres, apellidos, telefono, correo, 2)}>Siguiente</button>
                 </form>
               </div>
             </div>

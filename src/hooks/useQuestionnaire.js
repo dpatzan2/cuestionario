@@ -13,6 +13,13 @@ export const useQuestionnaire = () => {
         tiempo: '',
         interes: '',
         dejar: ''
+    });
+
+    const [datosJuegos, setdatosJuegos] = useState({
+        gustar: '',
+        juegos: '',
+        tiempo: '',
+        interes: '',
     })
 
     const [pagina, setPagina] = useState(1)
@@ -45,7 +52,19 @@ export const useQuestionnaire = () => {
         });
     }
 
-    console.log(datosPersonales);   
+    const setDatosJuegos = async ({
+        gustar ='',
+        juegos ='',
+        tiempo = '',
+        interes = '',
+    }) => {
+        await setdatosJuegos({
+          gustar: gustar,
+          juegos: juegos,
+          tiempo: tiempo,
+          interes: interes,
+        });
+    }
 
     const nextPage = async (page) => {
         await setPagina(page)
@@ -58,9 +77,11 @@ export const useQuestionnaire = () => {
     return {
         datosPersonales: datosPersonales,
         datosActividades: datosActividades,
+        datosJuegos: datosJuegos,
         pagina: pagina, 
         setDatosActividades,
         setDatosPersonales,
+        setDatosJuegos,
         nextPage
     }
 
