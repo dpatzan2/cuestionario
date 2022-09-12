@@ -2,12 +2,19 @@ import React from "react";
 import { useForm } from "../hooks/useForm";
 
 export const Peliculas = ({ onSubmitDataPeliculas, datosPeliculas }) => {
-  const { gustar, peliculas, tiempo, interes, onInputChange } = useForm({
+  let { gustar, peliculas, tiempo, interes, onInputChange } = useForm({
     gustar: datosPeliculas.gustar,
     peliculas: datosPeliculas.peliculas,
     tiempo: datosPeliculas.tiempo,
     interes: datosPeliculas.interes,
   });
+
+  if(gustar === 'No'){
+    peliculas = '',
+    tiempo = '',
+    interes = ''
+  }
+
 
   const regresar = () => {
     onSubmitDataPeliculas(gustar, peliculas, tiempo, interes, 3);

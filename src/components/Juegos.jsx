@@ -2,12 +2,19 @@ import React from "react";
 import { useForm } from "../hooks/useForm";
 
 export const Juegos = ({ onSubmitDataJuegos, datosJuegos }) => {
-  const { gustar, juegos, tiempo, interes, onInputChange } = useForm({
+  let { gustar, juegos, tiempo, interes, onInputChange } = useForm({
     gustar: datosJuegos.gustar,
     juegos: datosJuegos.juegos,
     tiempo: datosJuegos.tiempo,
     interes: datosJuegos.interes,
   });
+
+
+  if(gustar === 'No'){
+    juegos = '',
+    tiempo = '',
+    interes = ''
+  }
 
   const regresar = () => {
     onSubmitDataJuegos(gustar, juegos, tiempo, interes, 2);

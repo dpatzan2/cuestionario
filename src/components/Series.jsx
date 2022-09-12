@@ -2,12 +2,20 @@ import React from "react";
 import { useForm } from "../hooks/useForm";
 
 export const Series = ({ onSubmitDataSeries, datosSeries }) => {
-  const { gustar, series, tiempo, interes, onInputChange } = useForm({
+  let { gustar, series, tiempo, interes, onInputChange } = useForm({
     gustar: datosSeries.gustar,
     series: datosSeries.series,
     tiempo: datosSeries.tiempo,
     interes: datosSeries.interes,
   });
+
+  if(gustar === 'No'){
+    series = '',
+    tiempo = '',
+    interes = ''
+  }
+
+
 
   const regresar = () => {
     onSubmitDataSeries(gustar, series, tiempo, interes, 4);
