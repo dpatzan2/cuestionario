@@ -77,23 +77,25 @@ export const ActividadesFavoritas = ({
                   onChange={onInputChange}
                   required
                 />
-                <button className="buttons" onClick={() => regresar()}>
-                  Anterior
-                </button>
-                <button
-                  className="buttons"
-                  onClick={() =>
-                    onSubmitDataActividad(
-                      actvidaades,
-                      tiempo,
-                      interes,
-                      dejar,
-                      3
-                    )
-                  }
-                >
-                  Siguiente
-                </button>
+                <div className="contenedor-buttons">
+                  <button className="buttons" onClick={() => regresar()}>
+                    Anterior
+                  </button>
+                  <button
+                    className="buttons"
+                    onClick={() =>
+                      onSubmitDataActividad(
+                        actvidaades,
+                        tiempo,
+                        interes,
+                        dejar,
+                        3
+                      )
+                    }
+                  >
+                    Siguiente
+                  </button>
+                </div>
               </form>
             </div>
           </div>

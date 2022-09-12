@@ -61,14 +61,22 @@ export const DatosPersonales = ({ setDatosPersonales, datosPersonales }) => {
                   onChange={onInputChange}
                   required
                 />
-                <button
-                  className="buttons"
-                  onClick={() =>
-                    setDatosPersonales(nombres, apellidos, telefono, correo, 2)
-                  }
-                >
-                  Siguiente
-                </button>
+                <div className="contenedor-buttons">
+                  <button
+                    className="buttons"
+                    onClick={() =>
+                      setDatosPersonales(
+                        nombres,
+                        apellidos,
+                        telefono,
+                        correo,
+                        2
+                      )
+                    }
+                  >
+                    Siguiente
+                  </button>
+                </div>
               </form>
             </div>
           </div>

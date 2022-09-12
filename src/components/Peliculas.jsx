@@ -32,6 +32,7 @@ export const Peliculas = ({ onSubmitDataPeliculas, datosPeliculas }) => {
                       name="gustar"
                       value="Si"
                       onChange={onInputChange}
+                      checked={gustar === "Si" ? true : false}
                     />
                   </div>
                   <div className="radios-buttons">
@@ -44,6 +45,7 @@ export const Peliculas = ({ onSubmitDataPeliculas, datosPeliculas }) => {
                       name="gustar"
                       value="No"
                       onChange={onInputChange}
+                      checked={gustar === "No" ? true : false}
                     />
                   </div>
                   <div className="radios-buttons">
@@ -61,6 +63,7 @@ export const Peliculas = ({ onSubmitDataPeliculas, datosPeliculas }) => {
                   placeholder="Ingresa las peliculas que te gustan"
                   value={peliculas}
                   onChange={onInputChange}
+                  disabled={gustar === "No" ? true : false}
                   required
                 />
 
@@ -74,6 +77,7 @@ export const Peliculas = ({ onSubmitDataPeliculas, datosPeliculas }) => {
                   placeholder="Ingresa el tiempo, ejemplo 3-4 horas al dia"
                   value={tiempo}
                   onChange={onInputChange}
+                  disabled={gustar === "No" ? true : false}
                   required
                 />
 
@@ -85,19 +89,28 @@ export const Peliculas = ({ onSubmitDataPeliculas, datosPeliculas }) => {
                   placeholder="Ingresa que peliculas te llaman la atencion"
                   value={interes}
                   onChange={onInputChange}
+                  disabled={gustar === "No" ? true : false}
                   required
                 />
-                <button className="buttons" onClick={() => regresar()}>
-                  Anterior
-                </button>
-                <button
-                  className="buttons"
-                  onClick={() =>
-                    onSubmitDataPeliculas(gustar, peliculas, tiempo, interes, 5)
-                  }
-                >
-                  Siguiente
-                </button>
+                <div className="contenedor-buttons">
+                  <button className="buttons" onClick={() => regresar()}>
+                    Anterior
+                  </button>
+                  <button
+                    className="buttons"
+                    onClick={() =>
+                      onSubmitDataPeliculas(
+                        gustar,
+                        peliculas,
+                        tiempo,
+                        interes,
+                        5
+                      )
+                    }
+                  >
+                    Siguiente
+                  </button>
+                </div>
               </form>
             </div>
           </div>

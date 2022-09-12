@@ -32,6 +32,7 @@ export const Juegos = ({ onSubmitDataJuegos, datosJuegos }) => {
                       name="gustar"
                       value="Si"
                       onChange={onInputChange}
+                      checked={gustar === "Si" ? true : false}
                     />
                   </div>
                   <div className="radios-buttons">
@@ -44,6 +45,7 @@ export const Juegos = ({ onSubmitDataJuegos, datosJuegos }) => {
                       name="gustar"
                       value="No"
                       onChange={onInputChange}
+                      checked={gustar === "No" ? true : false}
                     />
                   </div>
                   <div className="radios-buttons">
@@ -59,6 +61,7 @@ export const Juegos = ({ onSubmitDataJuegos, datosJuegos }) => {
                   placeholder="Ingresa los video juegos que te gustan"
                   value={juegos}
                   onChange={onInputChange}
+                  disabled={gustar === "No" ? true : false}
                   required
                 />
 
@@ -72,6 +75,7 @@ export const Juegos = ({ onSubmitDataJuegos, datosJuegos }) => {
                   placeholder="Ingresa el tiempo, ejemplo 3-4 horas"
                   value={tiempo}
                   onChange={onInputChange}
+                  disabled={gustar === "No" ? true : false}
                   required
                 />
 
@@ -85,19 +89,22 @@ export const Juegos = ({ onSubmitDataJuegos, datosJuegos }) => {
                   placeholder="Ingresa que video juegos te llaman la atencion"
                   value={interes}
                   onChange={onInputChange}
+                  disabled={gustar === "No" ? true : false}
                   required
                 />
-                <button className="buttons" onClick={() => regresar()}>
-                  Anterior
-                </button>
-                <button
-                  className="buttons"
-                  onClick={() =>
-                    onSubmitDataJuegos(gustar, juegos, tiempo, interes, 4)
-                  }
-                >
-                  Siguiente
-                </button>
+                <div className="contenedor-buttons">
+                  <button className="buttons" onClick={() => regresar()}>
+                    Anterior
+                  </button>
+                  <button
+                    className="buttons"
+                    onClick={() =>
+                      onSubmitDataJuegos(gustar, juegos, tiempo, interes, 4)
+                    }
+                  >
+                    Siguiente
+                  </button>
+                </div>
               </form>
             </div>
           </div>

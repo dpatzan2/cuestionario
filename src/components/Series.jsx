@@ -32,6 +32,7 @@ export const Series = ({ onSubmitDataSeries, datosSeries }) => {
                       name="gustar"
                       value="Si"
                       onChange={onInputChange}
+                      checked={gustar === "Si" ? true : false}
                     />
                   </div>
                   <div className="radios-buttons">
@@ -44,6 +45,7 @@ export const Series = ({ onSubmitDataSeries, datosSeries }) => {
                       name="gustar"
                       value="No"
                       onChange={onInputChange}
+                      checked={gustar === "No" ? true : false}
                     />
                   </div>
                   <div className="radios-buttons">
@@ -59,6 +61,7 @@ export const Series = ({ onSubmitDataSeries, datosSeries }) => {
                   placeholder="Ingresa las series que te gustan"
                   value={series}
                   onChange={onInputChange}
+                  disabled={gustar === "No" ? true : false}
                   required
                 />
 
@@ -72,6 +75,7 @@ export const Series = ({ onSubmitDataSeries, datosSeries }) => {
                   placeholder="Ingresa el tiempo, ejemplo 3-4 horas al dia"
                   value={tiempo}
                   onChange={onInputChange}
+                  disabled={gustar === "No" ? true : false}
                   required
                 />
 
@@ -83,19 +87,22 @@ export const Series = ({ onSubmitDataSeries, datosSeries }) => {
                   placeholder="Ingresa que series te llaman la atencion"
                   value={interes}
                   onChange={onInputChange}
+                  disabled={gustar === "No" ? true : false}
                   required
                 />
-                <button className="buttons" onClick={() => regresar()}>
-                  Anterior
-                </button>
-                <button
-                  className="buttons"
-                  onClick={() =>
-                    onSubmitDataSeries(gustar, series, tiempo, interes, 6)
-                  }
-                >
-                  Enviar
-                </button>
+                <div className="contenedor-buttons">
+                  <button className="buttons" onClick={() => regresar()}>
+                    Anterior
+                  </button>
+                  <button
+                    className="buttons"
+                    onClick={() =>
+                      onSubmitDataSeries(gustar, series, tiempo, interes, 6)
+                    }
+                  >
+                    Enviar
+                  </button>
+                </div>
               </form>
             </div>
           </div>
